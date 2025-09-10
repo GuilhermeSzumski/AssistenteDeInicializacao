@@ -23,6 +23,8 @@ atalhosJogos = [
     { nome: 'Roblox Player', comando: 'start "" "C:\\Users\\Admin\\OneDrive\\Área de Trabalho\\Atalhos\\Roblox Player.lnk"' }
 ]
 
+let tarefa = [];
+
 //Função para iniciar o modo de trabalho
 function trabalho() {
     atalhosTrabalho.forEach(atalho => {
@@ -56,6 +58,48 @@ function jogos() {
     })
 }
 
+function menuTarefas() {
+    console.log(`
+        Bem-vindo ao menu de tarefas
+        Você pode escolher uma das seguintes opções:
+        1 - Adicionar tarefa
+        2 - Listar tarefas
+        3 - Remover tarefa
+        4 - Voltar ao menu principal
+    `);
+    const input = prompt("      Escolha uma das opções entrando o número de sua respectiva ação: ");
+
+    switch (input) {
+        case '1':
+            adicionarTarefa();
+            console.log("       Tarefa adicionada com sucesso!");
+            menuTarefas();
+            break;
+
+        case '4':
+            menu();
+            break;
+
+        default:
+            console.log("       Opção inválida, tente novamente.");
+            menuTarefas();
+            break;
+    }
+
+}
+
+function adicionarTarefa() {
+    const nomeTarefa = prompt("Digite o nome da tarefa: ");
+    const descricaoTarefa = prompt("Digite a descrição da tarefa: ");
+    const dataTarefa = prompt("Digite a data da tarefa, somente os números (AAAA/MM/DD): ");
+
+    tarefa = {
+        nome: nomeTarefa,
+        descricao: descricaoTarefa,
+        data: dataTarefa
+    };
+}
+
 function menu() {
     console.log(`
         Bem-vindo ao assistente de inicialização
@@ -64,7 +108,8 @@ function menu() {
         1 - Modo de trabalho
         2 - Modo de Estudos
         3 - Modo de Jogos
-        4 - Sair
+        4 - Tarefas
+        5 - Sair
 
     `);
     const input = prompt("      Escolha uma das opões entrando o número de seu respectivo modo: ");
@@ -85,7 +130,12 @@ function menu() {
             menu();
             break;
 
-        case '4':
+            case '4':
+            menuTarefas();
+            menu();
+            break;
+
+        case '5':
             console.log("       Saindo do assistente. Tenha um bom dia!");
             break;
     
