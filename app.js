@@ -11,7 +11,9 @@ const atalhosTrabalho = [
 
 atalhosEstudos = [
     { nome: 'Udemy', comando: `start "" "https://www.udemy.com"` },
-    { nome: 'Studeo', comando: `start "" "https://studeo.unicesumar.edu.br/#!/access/login"` }
+    { nome: 'Studeo', comando: `start "" "https://studeo.unicesumar.edu.br/#!/access/login"` },
+    { nome: 'Drive do TCC pessoal', comando: `start "" "https://drive.google.com/drive/folders/1KcFiQ40bn4ZSdvpviSwXI-aCoK6rDTqD"` },
+    { nome: 'Drive do TCC geral', comando: `start "" "https://drive.google.com/drive/folders/1_oKAH4RXgJCDGz9AfVOkHIwRAadT18EI"` }
 ];
 
 atalhosJogos = [
@@ -100,7 +102,22 @@ function adicionarTarefa() {
     };
 }
 
-function menu() {
+function desligarPC(){
+const input = prompt("Tem certeza que deseja desligar o computador? (s/n): ");
+    if (input.toLowerCase() === 's') {
+        exec('shutdown /s /t 10', (error) => {
+            if (error) {
+                console.log(`Erro ao desligar o computador: ${error.message}`);
+            } else {
+                console.log("O computador será desligado em 10 segundos.");
+            }
+        });
+    } else {
+        console.log("Operação de desligamento cancelada.");
+    }
+}
+
+function menuModos() {
     console.log(`
         Bem-vindo ao assistente de inicialização
         Você pode estar escolhendo dois modos para começar seu dia:
@@ -109,7 +126,8 @@ function menu() {
         2 - Modo de Estudos
         3 - Modo de Jogos
         4 - Tarefas
-        5 - Sair
+        5 - Sair do Programa
+        6 - Desligar o computador
 
     `);
     const input = prompt("      Escolha uma das opões entrando o número de seu respectivo modo: ");
@@ -138,6 +156,10 @@ function menu() {
         case '5':
             console.log("       Saindo do assistente. Tenha um bom dia!");
             break;
+
+        case '6':
+            desligarPC();
+            break;
     
         default:
             console.log("       Opção inválida, tente novamente.");
@@ -146,4 +168,4 @@ function menu() {
     }
 }
 
-menu();
+menuModos();
