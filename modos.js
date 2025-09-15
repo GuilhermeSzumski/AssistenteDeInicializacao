@@ -23,8 +23,7 @@ const atalhosJogos = [
     { nome: 'Epic Games', comando: 'start "" "C:\\Users\\Admin\\OneDrive\\Área de Trabalho\\Atalhos\\Epic Games.lnk"' },
     { nome: 'Hydra', comando: 'start "" "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Hydra.lnk"' },
     { nome: 'Discord', comando: 'start "" "C:\\Users\\Admin\\OneDrive\\Área de Trabalho\\Atalhos\\Discord.lnk"' },
-    { nome: 'CurseForge', comando: 'start "" "C:\\Users\\Admin\\OneDrive\\Área de Trabalho\\Atalhos\\CurseForge.lnk"' },
-    { nome: 'Roblox Player', comando: 'start "" "C:\\Users\\Admin\\OneDrive\\Área de Trabalho\\Atalhos\\Roblox Player.lnk"' }
+    { nome: 'CurseForge', comando: 'start "" "C:\\Users\\Admin\\OneDrive\\Área de Trabalho\\Atalhos\\CurseForge.lnk"' }
 ]
 
 

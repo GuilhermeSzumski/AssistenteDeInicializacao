@@ -1,7 +1,7 @@
 import PromptSync from 'prompt-sync';
 const prompt = PromptSync();
 import { menuModos } from './modos.js';
-//import { menuTarefas } from './tarefas.js';
+import { menuTarefas } from './tarefas.js';
 import { menuEncerramento } from './encerramento.js';
 
 function menuPrincipal() {
