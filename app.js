@@ -1,171 +1,44 @@
-const prompt = require('prompt-sync')();
-const { exec } = require('child_process');
+import PromptSync from 'prompt-sync';
+const prompt = PromptSync();
+import { menuModos } from './modos.js';
+//import { menuTarefas } from './tarefas.js';
+import { menuEncerramento } from './encerramento.js';
 
-const atalhosTrabalho = [
-    { nome: 'Google Agenda', comando: `start "" "https://calendar.google.com/calendar/u/0/r?pli=1"` },
-    { nome: 'Gmail', comando: `start "" "https://mail.google.com/mail/u/0/#inbox"` },
-    { nome: 'Google Drive', comando: `start "" "https://drive.google.com/drive/home"` },
-    { nome: 'GitHub', comando: `start "" "https://github.com"` },
-    { nome: 'ChatGPT', comando: `start "" "https://chat.openai.com"` },
-];
-
-atalhosEstudos = [
-    { nome: 'Udemy', comando: `start "" "https://www.udemy.com"` },
-    { nome: 'Studeo', comando: `start "" "https://studeo.unicesumar.edu.br/#!/access/login"` },
-    { nome: 'Drive do TCC pessoal', comando: `start "" "https://drive.google.com/drive/folders/1KcFiQ40bn4ZSdvpviSwXI-aCoK6rDTqD"` },
-    { nome: 'Drive do TCC geral', comando: `start "" "https://drive.google.com/drive/folders/1_oKAH4RXgJCDGz9AfVOkHIwRAadT18EI"` }
-];
-
-atalhosJogos = [
-    { nome: 'Steam', comando: 'start "" "C:\\Users\\Admin\\OneDrive\\Área de Trabalho\\Atalhos\\Steam.lnk"' },
-    { nome: 'Epic Games', comando: 'start "" "C:\\Users\\Admin\\OneDrive\\Área de Trabalho\\Atalhos\\Epic Games.lnk"' },
-    { nome: 'Hydra', comando: 'start "" "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Hydra.lnk"' },
-    { nome: 'Discord', comando: 'start "" "C:\\Users\\Admin\\OneDrive\\Área de Trabalho\\Atalhos\\Discord.lnk"' },
-    { nome: 'CurseForge', comando: 'start "" "C:\\Users\\Admin\\OneDrive\\Área de Trabalho\\Atalhos\\CurseForge.lnk"' },
-    { nome: 'Roblox Player', comando: 'start "" "C:\\Users\\Admin\\OneDrive\\Área de Trabalho\\Atalhos\\Roblox Player.lnk"' }
-]
-
-let tarefa = [];
-
-//Função para iniciar o modo de trabalho
-function trabalho() {
-    atalhosTrabalho.forEach(atalho => {
-        exec(atalho.comando, (error) => {
-            if (error) {
-                console.log(`Erro ao abrir ${atalho.nome}: ${error.message}`);
-            }
-        });
-    });
-}
-
-//Função para iniciar o modo de estudos
-function estudos() {
-    atalhosEstudos.forEach(atalho => {
-        exec(atalho.comando, (error) => {
-            if (error) {
-                console.log(`Erro ao abrir ${atalho.nome}: ${error.message}`);
-            }
-        });
-    });
-}
-
-//Função para iniciar o modo de jogos
-function jogos() {
-    atalhosJogos.forEach(atalho => {
-        exec(atalho.comando, (error) => {
-            if (error) {
-                console.log(`Erro ao abrir ${atalho.nome}: ${error.message}`);
-            }
-        })
-    })
-}
-
-function menuTarefas() {
+function menuPrincipal() {
     console.log(`
-        Bem-vindo ao menu de tarefas
-        Você pode escolher uma das seguintes opções:
-        1 - Adicionar tarefa
-        2 - Listar tarefas
-        3 - Remover tarefa
-        4 - Voltar ao menu principal
+        Bem-vindo ao assistente de inicialização
+        O que deseja fazer?
+        1 - Iniciar modos
+        2 - Gerenciar tarefas
+        3 - Gerenciar encerramento do PC
+        4 - Sair do programa
     `);
     const input = prompt("      Escolha uma das opções entrando o número de sua respectiva ação: ");
 
     switch (input) {
         case '1':
-            adicionarTarefa();
-            console.log("       Tarefa adicionada com sucesso!");
-            menuTarefas();
-            break;
-
-        case '4':
-            menu();
-            break;
-
-        default:
-            console.log("       Opção inválida, tente novamente.");
-            menuTarefas();
-            break;
-    }
-
-}
-
-function adicionarTarefa() {
-    const nomeTarefa = prompt("Digite o nome da tarefa: ");
-    const descricaoTarefa = prompt("Digite a descrição da tarefa: ");
-    const dataTarefa = prompt("Digite a data da tarefa, somente os números (AAAA/MM/DD): ");
-
-    tarefa = {
-        nome: nomeTarefa,
-        descricao: descricaoTarefa,
-        data: dataTarefa
-    };
-}
-
-function desligarPC(){
-const input = prompt("Tem certeza que deseja desligar o computador? (s/n): ");
-    if (input.toLowerCase() === 's') {
-        exec('shutdown /s /t 10', (error) => {
-            if (error) {
-                console.log(`Erro ao desligar o computador: ${error.message}`);
-            } else {
-                console.log("O computador será desligado em 10 segundos.");
-            }
-        });
-    } else {
-        console.log("Operação de desligamento cancelada.");
-    }
-}
-
-function menuModos() {
-    console.log(`
-        Bem-vindo ao assistente de inicialização
-        Você pode estar escolhendo dois modos para começar seu dia:
-
-        1 - Modo de trabalho
-        2 - Modo de Estudos
-        3 - Modo de Jogos
-        4 - Tarefas
-        5 - Sair do Programa
-        6 - Desligar o computador
-
-    `);
-    const input = prompt("      Escolha uma das opões entrando o número de seu respectivo modo: ");
-
-    switch (input) {
-        case '1':
-            trabalho();
-            menu();
+            menuModos();
             break;
 
         case '2':
-            estudos();
-            menu();
+            menuTarefas();
             break;
 
         case '3':
-            jogos();
-            menu();
+            menuEncerramento();
             break;
 
-            case '4':
-            menuTarefas();
-            menu();
-            break;
-
-        case '5':
+        case '4':
             console.log("       Saindo do assistente. Tenha um bom dia!");
             break;
 
-        case '6':
-            desligarPC();
-            break;
-    
         default:
             console.log("       Opção inválida, tente novamente.");
-            menu();
+            menuPrincipal();
             break;
     }
 }
 
-menuModos();
+menuPrincipal();
+
+export { menuPrincipal };
