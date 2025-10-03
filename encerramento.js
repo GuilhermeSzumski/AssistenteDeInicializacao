@@ -1,6 +1,7 @@
 import PromptSync from 'prompt-sync';
 const prompt = PromptSync();
 import { exec } from 'child_process';
+import { menuPrincipal } from './app.js';
 
 function desligarPC(){
 const input = prompt("Tem certeza que deseja desligar o computador? (s/n): ");
