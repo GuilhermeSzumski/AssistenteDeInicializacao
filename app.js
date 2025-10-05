@@ -36,7 +36,7 @@ function menuPrincipal() {
         case '4':
             console.clear();
             console.log('       Abrindo código no vs code');
-            exec('code .', (err) => {
+            exec('code C:\\Desenvolvimento\\AssistenteDeInicializacao', (err) => {
                 if (err) {
                     console.error(`Erro ao abrir o VS Code: ${err}`);
                     return;
