@@ -45,20 +45,24 @@ function menuEncerramento() {
 
     switch (input) {
         case '1':
+            console.clear();
             desligarPC();
             menuEncerramento();
             break;
         
         case '2':
+            console.clear();
             reiniciarPC();
             menuEncerramento();
             break;
 
         case '3':
+            console.clear();
             menuPrincipal();
             break;
 
         default:
+            console.clear();
             console.log("       Opção inválida, tente novamente.");
             menuEncerramento();
             break;
