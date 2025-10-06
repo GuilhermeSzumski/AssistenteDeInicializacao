@@ -92,10 +92,6 @@ function menuModos() {
         case '4':
             menuPrincipal();
             break;
-
-        case '5':
-            desligarPC();
-            break;
     
         default:
             console.log("       Opção inválida, tente novamente.");

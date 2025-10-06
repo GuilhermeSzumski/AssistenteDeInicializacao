@@ -36,6 +36,7 @@ function listarTarefas() {
         console.log("       Não há tarefas cadastradas.");
     } else {
         console.log("       Tarefas cadastradas:");
+        let tarefaOrdenada = tarefas.slice().sort((a, b) => new Date(a.data) - new Date(b.data));
         tarefas.forEach((tarefa, index) => {
             console.log(`       ${index + 1} - ${tarefa.nome} (${tarefa.data})`);
         });
