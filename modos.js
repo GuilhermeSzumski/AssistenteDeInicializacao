@@ -75,27 +75,32 @@ function menuModos() {
 
     switch (input) {
         case '1':
+            console.clear();
             trabalho();
             menuModos();
             break;
         
         case '2':
+            console.clear();
             estudos();
             menuModos();
             break;
 
         case '3':
+            console.clear();
             jogos();
             menuModos();
             break;
 
         case '4':
+            console.clear();
             menuPrincipal();
             break;
     
         default:
+            console.clear();
             console.log("       Opção inválida, tente novamente.");
-            menu();
+            menuModos();
             break;
     }
 }

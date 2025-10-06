@@ -19,12 +19,15 @@ function carregarTarefas() {
 function adicionarTarefa() {
     const nomeTarefa = prompt("     Digite o nome da tarefa: ");
     const descricaoTarefa = prompt("     Digite a descrição da tarefa: ");
-    const dataTarefa = prompt("     Digite a data da tarefa, somente os números (AAAA/MM/DD): ");
+    const dataTarefa = prompt("     Digite a data da tarefa no seguinte formato (DD/MM/AAAA): ");
+
+    const [dia, mes, ano] = dataTarefa.split('/');
+    const dataFormatada = new Date(ano, mes - 1, dia);
 
     const tarefa = {
         nome: nomeTarefa,
         descricao: descricaoTarefa,
-        data: dataTarefa
+        data: dataFormatada
     };
     tarefas.push(tarefa);
     salvarTarefas();
@@ -38,7 +41,7 @@ function listarTarefas() {
         console.log("       Tarefas cadastradas:");
         let tarefaOrdenada = tarefas.slice().sort((a, b) => new Date(a.data) - new Date(b.data));
         tarefas.forEach((tarefa, index) => {
-            console.log(`       ${index + 1} - ${tarefa.nome} (${tarefa.data})`);
+            console.log(`       ${index + 1} - ${tarefa.nome} - ${tarefa.descricao} - ${tarefa.data}`);
         });
     }
 }
@@ -49,12 +52,15 @@ function editarTarefa() {
     if (input >= 0 && input < tarefas.length) {
         const nomeTarefa = prompt("Digite o novo nome da tarefa: ");
         const descricaoTarefa = prompt("Digite a nova descrição da tarefa: ");
-        const dataTarefa = prompt("Digite a nova data da tarefa, somente os números (AAAA/MM/DD): ");
+        const dataTarefa = prompt("Digite a nova data da tarefa no seguinte formato (DD/MM/AAAA): ");
+
+        const [dia, mes, ano] = dataTarefa.split('/');
+        const dataFormatada = new Date(ano, mes - 1, dia);
 
         tarefas[input] = {
             nome: nomeTarefa,
             descricao: descricaoTarefa,
-            data: dataTarefa
+            data: dataFormatada
         };
         salvarTarefas();
         console.log("       Tarefa editada com sucesso!");
