@@ -29,7 +29,10 @@ function adicionarTarefa() {
         descricao: descricaoTarefa,
         data: dataFormatada
     };
+    carregarTarefas();
     tarefas.push(tarefa);
+    console.clear();
+    console.log("       Tarefa adicionada com sucesso!");
     salvarTarefas();
 }
 
@@ -63,8 +66,10 @@ function editarTarefa() {
             data: dataFormatada
         };
         salvarTarefas();
+        console.clear();
         console.log("       Tarefa editada com sucesso!");
     } else {
+        console.clear();
         console.log("       Tarefa não encontrada.");
     }
 }
@@ -75,8 +80,10 @@ function removerTarefa() {
     if (input >= 0 && input < tarefas.length) {
         tarefas.splice(input, 1);
         salvarTarefas();
+        console.clear();
         console.log("       Tarefa removida com sucesso!");
     } else {
+        console.clear();
         console.log("       Tarefa não encontrada.");
     }
 }
@@ -95,31 +102,36 @@ function menuTarefas() {
 
     switch (input) {
         case '1':
+            console.clear();
             adicionarTarefa();
-            console.log("       Tarefa adicionada com sucesso!");
             menuTarefas();
             break;
 
         case '2':
+            console.clear();
             listarTarefas();
             menuTarefas();
             break;
 
         case '3':
+            console.clear();
             editarTarefa();
             menuTarefas();
             break;
 
         case '4':
+            console.clear();
             removerTarefa();
             menuTarefas();
             break;
 
         case '5':
+            console.clear();
             menuPrincipal();
             break;
 
         default:
+            console.clear();
             console.log("       Opção inválida, tente novamente.");
             menuTarefas();
             break;
