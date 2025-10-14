@@ -1,3 +1,8 @@
+import PromptSync from 'prompt-sync';
+const prompt = PromptSync();
+//import { exec } from 'child_process';
+import { menuPrincipal } from './app.js';
+
 function menuAtalhos() {
     console.log(`       Atalhos rápidos:
         1 - Firefox
